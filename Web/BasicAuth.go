@@ -2,9 +2,9 @@ package Web
 
 import "net/http"
 
-// Returns a Middleware function that will evaluate basic auth against BasicAuthCredentials
+// Returns a HandlerComposite function that will evaluate basic auth against BasicAuthCredentials
 // before passing the control to the http handler.
-func BasicAuth(credentials BasicAuthCredentials) Middleware {
+func BasicAuth(credentials BasicAuthCredentials) HandlerComposite {
 	return func (h http.HandlerFunc) http.HandlerFunc {
 		return func(responseWriter http.ResponseWriter, request *http.Request) {
 			const UnauthorizedStatusCode = 401
@@ -28,4 +28,3 @@ func BasicAuth(credentials BasicAuthCredentials) Middleware {
 		}
 	}
 }
-

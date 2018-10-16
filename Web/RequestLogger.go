@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func RequestLogger() Middleware {
+func RequestLogger() HandlerComposite {
 	return func (h http.HandlerFunc) http.HandlerFunc {
 		return func(responseWriter http.ResponseWriter, request *http.Request) {
 			log.Print("REQ URL ", request.URL)
